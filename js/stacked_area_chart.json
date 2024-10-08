@@ -4,7 +4,7 @@
     "width": 760,
     "height": 400,
     "data": {
-      "url": "https://raw.githubusercontent.com/hangsheng0625/FIT3179_A2/main/data/modern-renewable-energy-consumption.csv"
+      "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/modern-renewable-energy-consumption.csv"
     },
     "transform": [
       {
