@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+        .title-main {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #stacked-area-chart {
+            margin-top: 50px; /* Adjust this value to move the chart down */
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="title-main">Renewable Energy</h1>
+
+    <div id="choropleth-map"></div>
+    <div id="stacked-area-chart"></div>
+
+    <script>
+        // Choropleth Map
+        fetch('https://raw.githubusercontent.com/hangsheng0625/FIT3179_A2/main/js/chrolopleth_map.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#choropleth-map', spec);
+            })
+            .catch(error => console.error('Error loading choropleth map spec:', error));
+
+        // Stacked Area Chart
+        fetch('https://raw.githubusercontent.com/hangsheng0625/FIT3179_A2/main/js/stacked_area_chart.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#stacked-area-chart', spec);
+            })
+            .catch(error => console.error('Error loading stacked area chart spec:', error));
+    </script>
+
+</body>
+</html>
