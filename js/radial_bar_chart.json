@@ -1,0 +1,133 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "width": 500,
+    "height": 500,
+    "padding": 5,
+    
+    "signals": [
+      {
+        "name": "startAngle", "value": -90,
+        "bind": {"input": "range", "min": -180, "max": 180, "step": 1}
+      },
+      {
+        "name": "endAngle", "value": 90,
+        "bind": {"input": "range", "min": -180, "max": 180, "step": 1}
+      },
+      {
+        "name": "padAngle", "value": 0.02,
+        "bind": {"input": "range", "min": 0, "max": 0.1}
+      },
+      {
+        "name": "bandPadding", "value": 0.1,
+        "bind": {"input": "range", "min": 0, "max": 1}
+      },
+      {
+        "name": "innerRadius", "value": 60,
+        "bind": {"input": "range", "min": 0, "max": 150, "step": 1}
+      },
+      {
+        "name": "yearFilter",
+        "value": 2019,
+        "bind": {
+          "input": "range",
+          "min": 2000,
+          "max": 2020,
+          "step": 1,
+          "name": "Select Year"
+        }
+      }
+    ],
+    
+    "data": [
+      {
+        "name": "source",
+        "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/deaths-types.csv",
+        "format": {"type": "csv"}
+      },
+      {
+        "name": "table",
+        "source": "source",
+        "transform": [
+          {
+            "type": "filter",
+            "expr": "datum.Year == yearFilter"
+          },
+          {
+            "type": "formula",
+            "as": "log_value",
+            "expr": "log(datum.Total_Number)"
+          },
+          {
+            "type": "window",
+            "sort": {"field": "Total_Number", "order": "ascending"},
+            "ops": ["row_number"],
+            "as": ["rank"]
+          }
+        ]
+      }
+    ],
+    
+    "scales": [
+      {
+        "name": "typeScale",
+        "type": "band",
+        "paddingInner": {"signal": "bandPadding"},
+        "range": [{"signal": "innerRadius"}, {"signal": "width / 2 - 10"}],
+        "domain": {
+          "data": "table",
+          "field": "Type",
+          "sort": {"field": "Total_Number", "order": "ascending"}
+        }
+      },
+      {
+        "name": "angleScale",
+        "type": "linear",
+        "range": [{"signal": "startAngle * PI / 180"}, {"signal": "endAngle * PI / 180"}],
+        "nice": true,
+        "zero": false,
+        "domain": {"data": "table", "field": "log_value"}
+      },
+      {
+        "name": "colorScale",
+        "type": "ordinal",
+        "domain": {
+          "data": "table",
+          "field": "Type",
+          "sort": {"field": "Total_Number", "order": "ascending"}
+        },
+        "range": {"scheme": "category10"}
+      }
+    ],
+    
+    "marks": [
+      {
+        "type": "arc",
+        "from": {"data": "table"},
+        "encode": {
+          "enter": {
+            "x": {"signal": "width / 2"},
+            "y": {"signal": "height / 2"}
+          },
+          "update": {
+            "fill": {"scale": "colorScale", "field": "Type"},
+            "startAngle": {"value": 0},
+            "endAngle": {"scale": "angleScale", "field": "log_value"},
+            "padAngle": {"signal": "padAngle"},
+            "innerRadius": {"scale": "typeScale", "field": "Type"},
+            "outerRadius": {"scale": "typeScale", "field": "Type", "offset": {"scale": "typeScale", "band": 1}},
+            "tooltip": {
+              "signal": "datum.Type + ': ' + format(datum.Total_Number, ',.2f')"
+            }
+          }
+        }
+      }
+    ],
+  
+    "legends": [
+      {
+        "fill": "colorScale",
+        "title": "Death Types",
+        "orient": "right"
+      }
+    ]
+  }
