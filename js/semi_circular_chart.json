@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width": 1200,
+    "mark": {
+      "type": "arc",
+      "innerRadius": 50,
+      "outerRadius": {"expr": "width/3"}
+    },
+    "data": {
+      "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
+    },
+    "params": [
+      {
+        "name": "yearFilter",
+        "value": 2003,
+        "bind": {
+          "input": "range",
+          "min": 1965,
+          "max": 2022,
+          "step": 1,
+          "name": "Select Year"
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "datum.Year == yearFilter"
+      }
+    ],
+    "encoding": {
+      "theta": {
+        "field": "Value",
+        "type": "quantitative",
+        "stack": true,
+        "scale": {
+          "rangeMin": {"expr": "-PI/2"},
+          "rangeMax": {"expr": "PI/2"}
+        }
+      },
+      "color": {
+        "field": "Emission_Type",
+        "type": "nominal",
+        "legend": {
+          "title": "Emission Type",
+          "orient": "right"
+        }
+      },
+      "tooltip": [
+        {"field": "Emission_Type", "type": "nominal", "title": "Emission Type"},
+        {"field": "Value", "type": "quantitative", "title": "Emission Value"},
+        {"field": "Year", "type": "ordinal", "title": "Year"}
+      ]
+    },
+    "config": {
+      "view": {"stroke": null},
+      "background": "#f0f0f0"
+    }
+  }
