@@ -6,13 +6,7 @@
   
   "signals": [
     {
-      "name": "startAngle", "value": 90
-    },
-    {
-      "name": "endAngle", "value": 180
-    },
-    {
-      "name": "padAngle", "value": 0.0
+      "name": "padAngle", "value": 0.02
     },
     {
       "name": "bandPadding", "value": 0.1
@@ -33,13 +27,8 @@
       "source": "source",
       "transform": [
         {
-          "type": "formula",
-          "as": "log_value",
-          "expr": "datum.Total_Number > 0 ? log(datum.Total_Number) : 0"
-        },
-        {
           "type": "window",
-          "sort": {"field": "Total_Number", "order": "ascending"},
+          "sort": {"field": "Total_Number", "order": "descending"},
           "ops": ["row_number"],
           "as": ["rank"]
         }
@@ -62,10 +51,8 @@
     {
       "name": "angleScale",
       "type": "linear",
-      "range": [{"signal": "startAngle * PI / 180"}, {"signal": "endAngle * PI / 180"}],
-      "nice": true,
-      "zero": false,
-      "domain": {"data": "table", "field": "log_value"}
+      "range": [0, {"signal": "1.5 * PI"}],  // Full circle (360 degrees)
+      "domain": {"data": "table", "field": "Total_Number"}
     },
     {
       "name": "colorScale",
@@ -91,7 +78,7 @@
         "update": {
           "fill": {"scale": "colorScale", "field": "Type"},
           "startAngle": {"value": 0},
-          "endAngle": {"scale": "angleScale", "field": "log_value"},
+          "endAngle": {"scale": "angleScale", "field": "Total_Number"},
           "padAngle": {"signal": "padAngle"},
           "innerRadius": {"scale": "typeScale", "field": "Type"},
           "outerRadius": {"scale": "typeScale", "field": "Type", "offset": {"scale": "typeScale", "band": 1}},
