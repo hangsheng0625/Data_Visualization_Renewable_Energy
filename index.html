@@ -15,62 +15,40 @@
             font-size: 2em;
             margin-bottom: 20px;
         }
-        #stacked-area-chart {
-            margin-top: 50px; /* Adjust this value to move the chart down */
+        .chart-container {
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
     <h1 class="title-main">Renewable Energy</h1>
-    
-    <div id="streamgraph"></div>
-    <div id="radial_bar_chart"></div>
-    <div id="semi_circular_chart"></div>
-    <div id="choropleth-map"></div>
-    <div id="stacked-area-chart"></div>
-    
-    
+
+    <div id="streamgraph" class="chart-container"></div>
+    <div id="radial_bar_chart" class="chart-container"></div>
+    <div id="semi_circular_chart" class="chart-container"></div>
+    <div id="choropleth-map" class="chart-container"></div>
+    <div id="stacked-area-chart" class="chart-container"></div>
 
     <script>
-        // Choropleth Map
-        fetch('https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/chrolopleth_map.vg.json')
-        
-            .then(response => response.json())
-            .then(spec => {
-                vegaEmbed('#choropleth-map', spec);
-            })
-            .catch(error => console.error('Error loading choropleth map spec:', error));
+        // Function to embed a Vega or Vega-Lite chart
+        function embedChart(elementId, url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(spec => {
+                    vegaEmbed(`#${elementId}`, spec).catch(error => {
+                        console.error(`Error embedding ${elementId} chart:`, error);
+                    });
+                })
+                .catch(error => console.error(`Error loading ${elementId} spec from ${url}:`, error));
+        }
 
-        // Stacked Area Chart
-        fetch('https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/stacked_area_chart.json')
-            .then(response => response.json())
-            .then(spec => {
-                vegaEmbed('#stacked-area-chart', spec);
-            })
-            .catch(error => console.error('Error loading stacked area chart spec:', error));
-
-        // Streamgraph
-        fetch('https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/streamgraph.json')
-            .then(response => response.json())
-            .then(spec => {
-                vegaEmbed('#streamgraph', spec);
-            })
-            .catch(error => console.error('Error loading stacked area chart spec:', error));
-
-        fetch('https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/semi_circular_chart.json')
-            .then(response => response.json())
-            .then(spec => {
-                vegaEmbed('#semi_circular_chart', spec);
-            })
-            .catch(error => console.error('Error loading stacked area chart spec:', error));
-
-        fetch('https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/radial_bar_chart.json')
-            .then(response => response.json())
-            .then(spec => {
-                vegaEmbed('#radial_bar_chart', spec);
-            })
-            .catch(error => console.error('Error loading stacked area chart spec:', error));
+        // Embed charts
+        embedChart('choropleth-map', 'https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/chrolopleth_map.vg.json');
+        embedChart('stacked-area-chart', 'https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/stacked_area_chart.json');
+        embedChart('streamgraph', 'https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/streamgraph.json');
+        embedChart('semi_circular_chart', 'https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/semi_circular_chart.json');
+        embedChart('radial_bar_chart', 'https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/radial_bar_chart.json');
     </script>
 
 </body>
