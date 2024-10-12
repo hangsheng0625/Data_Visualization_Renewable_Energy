@@ -4,7 +4,7 @@
   "height": 800,
   "padding": {"bottom": 20, "left": 20, "right": 30, "top": 40},
   "title": {
-    "text": "Greenhouse gas enissions",
+    "text": "Greenhouse gas emissions",
     "color": "#005ca5",
     "fontSize": 32,
     "dy": 0,
