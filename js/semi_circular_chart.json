@@ -51,9 +51,5 @@
         {"field": "Value", "type": "quantitative", "title": "Emission Value"},
         {"field": "Year", "type": "ordinal", "title": "Year"}
       ]
-    },
-    "config": {
-      "view": {"stroke": null},
-      "background": "#f0f0f0"
     }
   }
