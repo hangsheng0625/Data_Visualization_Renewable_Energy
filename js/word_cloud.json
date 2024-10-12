@@ -41,17 +41,16 @@
           {
             "type": "formula",
             "as": "angle",
-            "expr": "0" // Set all angles to 0 for horizontal text
+            "expr": "0"
           },
           {
             "type": "formula",
             "as": "group",
-            "expr": "'All Categories'" // Put all data in one group
+            "expr": "'All Categories'"
           }
         ]
       }
     ],
-  
     "scales": [
       {
         "name": "color",
@@ -60,7 +59,6 @@
         "range": ["#4575b4", "#abd9e9", "#fee090", "#f46d43"]
       }
     ],
-  
     "marks": [
       {
         "type": "group",
@@ -110,7 +108,6 @@
         ]
       }
     ],
-  
     "signals": [
       {
         "name": "tooltip",
@@ -121,9 +118,9 @@
         ]
       }
     ],
-  
     "title": {
       "text": {"signal": "tooltip.category"},
       "subtitle": {"signal": "'Value: ' + tooltip.value"}
     }
   }
+  
