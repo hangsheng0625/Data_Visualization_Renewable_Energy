@@ -124,7 +124,7 @@
           "radius": {"scale": "typeScale", "field": "Type", "offset": 20},
           "theta": {"value": 0},
           "fill": {"value": "black"},
-          "text": {"signal": "format(datum.Total_Number / 1000000, ',.2f') + ' million'"},
+          "text": {"signal": "datum.Type"},
           "align": {"value": "right"},
           "baseline": {"value": "middle"}
         }
