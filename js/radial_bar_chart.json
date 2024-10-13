@@ -3,7 +3,7 @@
   "width": 700,
   "height": 700,
   "padding": 5,
-  "title": "Air pollution is ranked as the second deadliest threat to human health in 2021 ",
+  "title": " Top 6 Deadliest Risk Factors ",
   "signals": [
     {
       "name": "padAngle", "value": 0.02
@@ -84,6 +84,8 @@
             "scale": "colorScale", 
             "field": "Type"
           },
+          "stroke": {"value": "#003366 "}, 
+          "strokeWidth": {"value": 2}, 
           "startAngle": {"value": 0},
           "endAngle": {"scale": "angleScale", "field": "Total_Number"},
           "padAngle": {"signal": "padAngle"},
@@ -117,12 +119,12 @@
       "from": {"data": "table"},
       "encode": {
         "enter": {
-          "x": {"signal": "width / 2"},
+          "x": {"signal": "width / 2.1"},
           "y": {"signal": "height / 2"},
           "radius": {"scale": "typeScale", "field": "Type", "offset": 20},
           "theta": {"value": 0},
           "fill": {"value": "black"},
-          "text": {"signal": "datum.Type + ': ' + format(datum.Total_Number / 1000000, ',.2f') + ' million'"},
+          "text": {"signal": "format(datum.Total_Number / 1000000, ',.2f') + ' million'"},
           "align": {"value": "right"},
           "baseline": {"value": "middle"}
         }
