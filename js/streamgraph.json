@@ -1,52 +1,66 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width":900,
-    "height": 500,
-    "description": "Global streamgraph showing energy consumption over time for different sources with tooltips.",
-    "data": {
-      "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/fossil-fuel-consumption-by-fuel-type.csv",
-      "format": {"type": "csv"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 500,
+  "title": "Global Fossil Fuel Consumption by Type (TWh) - 1965-2023",
+  "data": {
+    "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/fossil-fuel-consumption-by-fuel-type.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "fold": ["Gas consumption - TWh", "Coal consumption - TWh", "Oil consumption - TWh"],
+      "as": ["Energy Source", "Consumption"]
     },
-    "transform": [
-      {
-        "fold": ["Gas consumption - TWh", "Coal consumption - TWh", "Oil consumption - TWh"],
-        "as": ["Energy Source", "Consumption"]
-      },
-      {
-        "aggregate": [{"op": "sum", "field": "Consumption", "as": "Total Consumption"}],
-        "groupby": ["Year", "Energy Source"]
-      }
-    ],
-    "mark": "area",
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "temporal",
-        "axis": {"title": "Year"}
-      },
-      "y": {
-        "field": "Total Consumption",
-        "type": "quantitative",
-        "stack": "center",
-        "axis": {"title": "Energy Consumption (TWh)"}
-      },
-      "color": {
-        "field": "Energy Source",
-        "type": "nominal",
-        "scale": {"scheme": "category10"},
-        "legend": {"title": "Energy Source"}
-      },
-      "tooltip": [
-        {"field": "Year", "type": "temporal", "title": "Year"},
-        {"field": "Total Consumption", "type": "quantitative", "title": "Total Consumption (TWh)"},
-        {"field": "Energy Source", "type": "nominal", "title": "Energy Type"}
-      ]
+    {
+      "calculate": "round(datum.Consumption * 100) / 100", 
+      "as": "Rounded Consumption"
     },
-    "config": {
-      "area": {
-        "line": true,
-        "opacity": 0.7
-      }
+    {
+      "aggregate": [{"op": "sum", "field": "Rounded Consumption", "as": "Total Consumption"}],
+      "groupby": ["Year", "Energy Source"]
+    }
+  ],
+  "mark": "area",
+  "params": [
+    {
+      "name": "energySource",
+      "select": {"type": "point", "fields": ["Energy Source"]},
+      "bind": "legend"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "axis": {"title": "Year"}
+    },
+    "y": {
+      "field": "Total Consumption",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": {"title": "Energy Consumption (TWh)"}
+    },
+    "color": {
+      "field": "Energy Source",
+      "type": "nominal",
+      "scale": {"scheme": "category10"},
+      "legend": {"title": "Energy Source"}
+    },
+    "opacity": {
+      "condition": {"param": "energySource", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "Year", "type": "temporal", "title": "Year"},
+      {"field": "Total Consumption", "type": "quantitative", "title": "Total Consumption (TWh)"},
+      {"field": "Energy Source", "type": "nominal", "title": "Energy Type"}
+    ]
+  },
+  "config": {
+    "area": {
+      "line": true,
+      "opacity": 0.7
     }
   }
-  
+}

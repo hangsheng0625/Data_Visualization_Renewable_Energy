@@ -122,5 +122,5 @@
       "text": {"signal": "tooltip.category"},
       "subtitle": {"signal": "'Value: ' + tooltip.value"}
     }
+    
   }
-  

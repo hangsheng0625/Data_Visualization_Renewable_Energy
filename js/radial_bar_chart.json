@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 500,
-  "height": 500,
+  "width": 700,
+  "height": 700,
   "padding": 5,
-  
+  "title": "Air pollution is ranked as the second deadliest threat to human health in 2021 ",
   "signals": [
     {
       "name": "padAngle", "value": 0.02
@@ -81,20 +81,33 @@
           "endAngle": {"scale": "angleScale", "field": "Total_Number"},
           "padAngle": {"signal": "padAngle"},
           "innerRadius": {"scale": "typeScale", "field": "Type"},
-          "outerRadius": {"scale": "typeScale", "field": "Type", "offset": {"scale": "typeScale", "band": 1}},
+          "outerRadius": {
+            "scale": "typeScale", 
+            "field": "Type", 
+            "offset": {"scale": "typeScale", "band": 1}
+          },
+          "cornerRadius": {"value": 10},  
           "tooltip": {
-            "signal": "datum.Type + ': ' + format(datum.Total_Number, ',.2f')"
+            "signal": "datum.Type + ': ' + format(datum.Total_Number, ',.0f')"  
           }
         }
       }
-    }
-  ],
-
-  "legends": [
+    },
     {
-      "fill": "colorScale",
-      "title": "Death Types",
-      "orient": "right"
+      "type": "text",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"},
+          "radius": {"scale": "typeScale", "field": "Type", "offset": 20},  
+          "theta": {"value": 0},  
+          "fill": {"value": "black"},
+          "text": {"signal": "datum.Type + ': ' + format(datum.Total_Number/1000000, ',.2f') + ' million'"},  
+          "align": {"value": "right"},
+          "baseline": {"value": "middle"}
+        }
+      }
     }
   ]
 }

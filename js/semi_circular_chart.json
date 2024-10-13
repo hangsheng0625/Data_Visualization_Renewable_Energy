@@ -1,55 +1,69 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": 400,
-    "width": 1200,
-    "mark": {
-      "type": "arc",
-      "innerRadius": 50,
-      "outerRadius": {"expr": "width/3"}
-    },
-    "data": {
-      "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
-    },
-    "params": [
-      {
-        "name": "yearFilter",
-        "value": 2003,
-        "bind": {
-          "input": "range",
-          "min": 1965,
-          "max": 2022,
-          "step": 1,
-          "name": "Select Year"
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 400,
+  "width": 1200,
+  "title": "Greenhouse Gas Emissions (1965 - 2022)",
+  "mark": {
+    "type": "arc",
+    "innerRadius": 250,
+    "outerRadius": {"expr": "width/3"}
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
+  },
+  "params": [
+    {
+      "name": "yearFilter",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 1965,
+        "max": 2022,
+        "step": 1,
+        "name": "Select Year"
       }
-    ],
-    "transform": [
-      {
-        "filter": "datum.Year == yearFilter"
-      }
-    ],
-    "encoding": {
-      "theta": {
-        "field": "Value",
-        "type": "quantitative",
-        "stack": true,
-        "scale": {
-          "rangeMin": {"expr": "-PI/2"},
-          "rangeMax": {"expr": "PI/2"}
-        }
-      },
-      "color": {
-        "field": "Emission_Type",
-        "type": "nominal",
-        "legend": {
-          "title": "Emission Type",
-          "orient": "right"
-        }
-      },
-      "tooltip": [
-        {"field": "Emission_Type", "type": "nominal", "title": "Emission Type"},
-        {"field": "Value", "type": "quantitative", "title": "Emission Value"},
-        {"field": "Year", "type": "ordinal", "title": "Year"}
-      ]
     }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Year == yearFilter"
+    },
+    {
+      "calculate": "datum.Emission_Type == 'Total_NO' ? 'Nitrous Oxide' : datum.Emission_Type == 'Total_CO2' ? 'Carbon Dioxide' : datum.Emission_Type == 'Total_Methane' ? 'Methane' : datum.Emission_Type",
+      "as": "Emission_Type_Updated"
+    },
+    {
+      "calculate": "datum.Value / 1e9",
+      "as": "Value_Billions"
+    },
+    {
+      "calculate": "format(datum.Value_Billions, '.2f') + ' billion tonnes'",
+      "as": "Emission_Value_Formatted"
+    }
+  ],
+  "encoding": {
+    "theta": {
+      "field": "Value",
+      "type": "quantitative",
+      "stack": true,
+      "scale": {
+        "rangeMin": {"expr": "-PI/2"},
+        "rangeMax": {"expr": "PI/2"}
+      }
+    },
+    "color": {
+      "field": "Emission_Type_Updated",
+      "type": "nominal",
+      "legend": {
+        "title": "Emission Type",
+        "orient": "top-right", 
+        "offset": 50 
+      }
+    },
+    "tooltip": [
+      {"field": "Emission_Type_Updated", "type": "nominal", "title": "Emission Type"},
+      {"field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value"},
+      {"field": "Year", "type": "ordinal", "title": "Year"}
+    ]
   }
+}
