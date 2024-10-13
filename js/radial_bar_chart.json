@@ -13,9 +13,12 @@
     },
     {
       "name": "innerRadius", "value": 60
+    },
+    {
+      "name": "selectedType",
+      "value": null 
     }
   ],
-  
   "data": [
     {
       "name": "source",
@@ -35,7 +38,6 @@
       ]
     }
   ],
-  
   "scales": [
     {
       "name": "typeScale",
@@ -51,7 +53,7 @@
     {
       "name": "angleScale",
       "type": "linear",
-      "range": [0, {"signal": "1.5 * PI"}],  
+      "range": [0, {"signal": "1.5 * PI"}],
       "domain": {"data": "table", "field": "Total_Number"}
     },
     {
@@ -62,10 +64,12 @@
         "field": "Type",
         "sort": {"field": "Total_Number", "order": "ascending"}
       },
-      "range": {"scheme": "category10"}
+      "range": [
+        "#FF0000", "#FF7F00", "#FFFF00", "#00FF00", 
+        "#00FFFF", "#0000FF", "#4B0082", "#9400D3" 
+      ]
     }
   ],
-  
   "marks": [
     {
       "type": "arc",
@@ -76,20 +80,35 @@
           "y": {"signal": "height / 2"}
         },
         "update": {
-          "fill": {"scale": "colorScale", "field": "Type"},
+          "fill": {
+            "scale": "colorScale", 
+            "field": "Type"
+          },
           "startAngle": {"value": 0},
           "endAngle": {"scale": "angleScale", "field": "Total_Number"},
           "padAngle": {"signal": "padAngle"},
           "innerRadius": {"scale": "typeScale", "field": "Type"},
           "outerRadius": {
-            "scale": "typeScale", 
-            "field": "Type", 
+            "scale": "typeScale",
+            "field": "Type",
             "offset": {"scale": "typeScale", "band": 1}
           },
-          "cornerRadius": {"value": 10},  
+          "cornerRadius": {"value": 10},
           "tooltip": {
-            "signal": "datum.Type + ': ' + format(datum.Total_Number, ',.0f')"  
+            "signal": "datum.Type + ': ' + format(datum.Total_Number, ',.0f')"
+          },
+          "opacity": {
+            "signal": "datum.Type === selectedType ? 1 : 1" 
           }
+        },
+        "on": [
+          {
+            "events": {"type": "click"},
+            "update": "datum.Type"  
+          }
+        ],
+        "hover": {
+          "fill": {"value": "lightyellow"}
         }
       }
     },
@@ -100,10 +119,10 @@
         "enter": {
           "x": {"signal": "width / 2"},
           "y": {"signal": "height / 2"},
-          "radius": {"scale": "typeScale", "field": "Type", "offset": 20},  
-          "theta": {"value": 0},  
+          "radius": {"scale": "typeScale", "field": "Type", "offset": 20},
+          "theta": {"value": 0},
           "fill": {"value": "black"},
-          "text": {"signal": "datum.Type + ': ' + format(datum.Total_Number/1000000, ',.2f') + ' million'"},  
+          "text": {"signal": "datum.Type + ': ' + format(datum.Total_Number / 1000000, ',.2f') + ' million'"},
           "align": {"value": "right"},
           "baseline": {"value": "middle"}
         }
