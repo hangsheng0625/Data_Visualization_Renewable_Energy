@@ -1,13 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "height": 400,
-  "width": 1200,
-  "title": "Greenhouse Gas Emissions (1965 - 2022)",
-  "mark": {
-    "type": "arc",
-    "innerRadius": 250,
-    "outerRadius": {"expr": "width/3"}
-  },
+  "width": 600,
+  "height": 600,
+  "title": "Greenhouse Gas Global Emissions",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
   },
@@ -39,31 +34,87 @@
     {
       "calculate": "format(datum.Value_Billions, '.2f') + ' billion tonnes'",
       "as": "Emission_Value_Formatted"
+    },
+    {
+      "calculate": "datum.Emission_Type_Updated + ': ' + format(datum.Value_Billions, '.2f') + ' billion tonnes'",
+      "as": "Emission_Info"
     }
   ],
-  "encoding": {
-    "theta": {
-      "field": "Value",
-      "type": "quantitative",
-      "stack": true,
-      "scale": {
-        "rangeMin": {"expr": "-PI/2"},
-        "rangeMax": {"expr": "PI/2"}
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 40, "stroke": "#003366"},
+      "encoding": {
+        "theta": {"field": "Value", "type": "quantitative", "stack": true},
+        "radius": {"field": "Value", "type": "quantitative", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20, "rangeMax": 290}},
+        "color": {
+          "field": "Emission_Type_Updated",
+          "type": "nominal",
+          "legend": {
+            "title": "Emission Type",
+            "orient": "right",
+            "offset": 5
+          }
+        },
+        "tooltip": [
+          {"field": "Emission_Type_Updated", "type": "nominal", "title": "Emission Type"},
+          {"field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value"},
+          {"field": "Year", "type": "ordinal", "title": "Year"}
+        ]
       }
     },
-    "color": {
-      "field": "Emission_Type_Updated",
-      "type": "nominal",
-      "legend": {
-        "title": "Emission Type",
-        "orient": "top-right", 
-        "offset": 50 
-      }
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": 390,
+        "dy": 290,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"field": "Emission_Info"}
+      },
+      "transform": [
+        {
+          "filter": "datum.Emission_Type_Updated == 'Carbon Dioxide'"
+        }
+      ]
     },
-    "tooltip": [
-      {"field": "Emission_Type_Updated", "type": "nominal", "title": "Emission Type"},
-      {"field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value"},
-      {"field": "Year", "type": "ordinal", "title": "Year"}
-    ]
-  }
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": 390,
+        "dy": 270,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"field": "Emission_Info"}
+      },
+      "transform": [
+        {
+          "filter": "datum.Emission_Type_Updated == 'Methane'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": 390,
+        "dy": 250,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"field": "Emission_Info"}
+      },
+      "transform": [
+        {
+          "filter": "datum.Emission_Type_Updated == 'Nitrous Oxide'"
+        }
+      ]
+    }
+  ]
 }
