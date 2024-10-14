@@ -1,37 +1,54 @@
 body {
     text-align: center;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center align the content horizontally */
-    justify-content: center; /* Center align the content vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
 .title-main {
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 900px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .chart-container {
-    margin-top: 50px;
-    width: 100%; /* Ensure each chart takes the full width */
-    max-width: 900px; /* Optionally limit the width of the charts for consistency */
-    display: block; /* Ensure each container behaves like a block element */
+    margin-top: 20px;
+    width: 100%;
 }
 
 .sankey-container {
-    display: flex; /* Use flexbox for the Sankey charts */
-    justify-content: space-around; /* Space them evenly */
-    margin-top: 50px; /* Optional: keep some margin above the Sankey charts */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .sankey-container > div {
-    flex: 1; /* Allow both charts to take equal space */
-    max-width: 400px; /* Optional: limit maximum width of each chart */
-    margin: 0 10px; /* Optional: add space between the charts */
+    flex: 1;
+    min-width: 300px;
+    margin: 0 10px 20px;
 }
 
 @media (min-width: 768px) {
-    .chart-container {
-        width: 90%; /* Use 90% of the screen width on larger devices */
+    .card {
+        width: 90%;
     }
 }
