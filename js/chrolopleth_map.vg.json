@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 1200,
   "height": 600,
+  "background": "transparent",
   "title": {
     "text": "Global Renewable Energy Share (% of Equivalent Primary Energy)",
     "subtitle": "Use the slider to change the year. Gray areas indicate no data available.",

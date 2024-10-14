@@ -3,6 +3,7 @@
   "title": "Renewable Energy Generation by Source Over Time",
   "width": 1000,
   "height": 500,
+  "background": "transparent",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/modern-renewable-energy-consumption.csv"
   },

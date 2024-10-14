@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 .card {
-    background-color: white;
+    background-color: linear-gradient(to right, #e0f7fa, #fae89f);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
