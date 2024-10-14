@@ -14,14 +14,13 @@ body {
 .chart-container {
     margin-top: 50px;
     width: 100%; /* Ensure each chart takes the full width */
-    display: block; /* Make sure the container behaves like a block element */
     max-width: 900px; /* Optionally limit the width of the charts for consistency */
+    display: block; /* Ensure each container behaves like a block element */
 }
 
 .sankey-container {
-    display: flex; /* Use flexbox to arrange child elements in a row */
+    display: flex; /* Use flexbox for the Sankey charts */
     justify-content: space-around; /* Space them evenly */
-    width: 100%; /* Ensure it takes the full width */
     margin-top: 50px; /* Optional: keep some margin above the Sankey charts */
 }
 

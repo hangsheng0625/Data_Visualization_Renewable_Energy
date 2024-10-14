@@ -18,6 +18,16 @@
         .chart-container {
             margin-top: 50px;
         }
+        .sankey-container {
+            display: flex; /* Use flexbox to arrange child elements in a row */
+            justify-content: space-around; /* Space them evenly */
+            margin-top: 50px; /* Optional: keep some margin above the Sankey charts */
+        }
+        .sankey-container > div {
+            flex: 1; /* Allow both charts to take equal space */
+            max-width: 400px; /* Optional: limit maximum width of each chart */
+            margin: 0 10px; /* Optional: add space between the charts */
+        }
     </style>
 </head>
 <body>
@@ -34,7 +44,6 @@
         <div id="sankey_diagram_e_g"></div>
     </div>
     <div id="word_cloud" class="chart-container"></div>
-
 
     <script>
         // Function to embed a Vega or Vega-Lite chart
