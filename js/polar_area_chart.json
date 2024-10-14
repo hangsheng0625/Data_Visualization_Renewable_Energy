@@ -1,121 +1,124 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 600,
-    "height": 600,
-    "title": "Greenhouse Gas Global Emissions",
-    "data": {
-      "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 600,
+  "title": "Greenhouse Gas Global Emissions",
+  "data": {
+    "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
+  },
+  "params": [
+    {
+      "name": "yearFilter",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 1965,
+        "max": 2022,
+        "step": 1,
+        "name": "Select Year"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Year == yearFilter"
     },
-    "params": [
-      {
-        "name": "yearFilter",
-        "value": 2022,
-        "bind": {
-          "input": "range",
-          "min": 1965,
-          "max": 2022,
-          "step": 1,
-          "name": "Select Year"
-        }
-      }
-    ],
-    "transform": [
-      {
-        "filter": "datum.Year == yearFilter"
-      },
-      {
-        "calculate": "datum.Emission_Type == 'Total_NO' ? 'Nitrous Oxide' : datum.Emission_Type == 'Total_CO2' ? 'Carbon Dioxide' : datum.Emission_Type == 'Total_Methane' ? 'Methane' : datum.Emission_Type",
-        "as": "Emission_Type_Updated"
-      },
-      {
-        "calculate": "datum.Value / 1e9",
-        "as": "Value_Billions"
-      },
-      {
-        "calculate": "format(datum.Value_Billions, '.2f') + ' billion tonnes'",
-        "as": "Emission_Value_Formatted"
-      },
-      {
-        "calculate": "datum.Emission_Type_Updated + ': ' + format(datum.Value_Billions, '.2f') + ' billion tonnes'",
-        "as": "Emission_Info"
-      }
-    ],
-    "layer": [
-      {
-        "mark": {"type": "arc", "innerRadius": 40, "stroke": "#003366"},
-        "encoding": {
-          "theta": {"field": "Value", "type": "quantitative", "stack": true},
-          "radius": {"field": "Value", "type": "quantitative", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20, "rangeMax": 290}},
-          "color": {
-            "field": "Emission_Type_Updated",
-            "type": "nominal",
-            "legend": {
-              "title": "Emission Type",
-              "orient": "right",
-              "offset": 5
-            }
+    {
+      "calculate": "datum.Emission_Type == 'Total_NO' ? 'Nitrous Oxide' : datum.Emission_Type == 'Total_CO2' ? 'Carbon Dioxide' : datum.Emission_Type == 'Total_Methane' ? 'Methane' : datum.Emission_Type",
+      "as": "Emission_Type_Updated"
+    },
+    {
+      "calculate": "datum.Value / 1e9",
+      "as": "Value_Billions"
+    },
+    {
+      "calculate": "format(datum.Value_Billions, '.2f') + ' billion tonnes'",
+      "as": "Emission_Value_Formatted"
+    },
+    {
+      "calculate": "datum.Emission_Type_Updated + ': ' + format(datum.Value_Billions, '.2f') + ' billion tonnes'",
+      "as": "Emission_Info"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 40, "stroke": "#003366"},
+      "encoding": {
+        "theta": {"field": "Value", "type": "quantitative", "stack": true},
+        "radius": {"field": "Value", "type": "quantitative", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20, "rangeMax": 290}},
+        "color": {
+          "field": "Emission_Type_Updated",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Carbon Dioxide", "Methane", "Nitrous Oxide"], 
+            "range": ["#708871", "#BEC6A0", "#FEF3E2"]  
           },
-          "tooltip": [
-            {"field": "Emission_Type_Updated", "type": "nominal", "title": "Emission Type"},
-            {"field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value"},
-            {"field": "Year", "type": "ordinal", "title": "Year"}
-          ]
-        }
-      },
-      {
-        "mark": {
-          "type": "text",
-          "align": "right",
-          "baseline": "bottom",
-          "dx": 390,
-          "dy": 290,
-          "fontSize": 12
-        },
-        "encoding": {
-          "text": {"field": "Emission_Info"}
-        },
-        "transform": [
-          {
-            "filter": "datum.Emission_Type_Updated == 'Carbon Dioxide'"
+          "legend": {
+            "title": "Emission Type",
+            "orient": "right",
+            "offset": 5
           }
-        ]
-      },
-      {
-        "mark": {
-          "type": "text",
-          "align": "right",
-          "baseline": "bottom",
-          "dx": 390,
-          "dy": 270,
-          "fontSize": 12
         },
-        "encoding": {
-          "text": {"field": "Emission_Info"}
-        },
-        "transform": [
-          {
-            "filter": "datum.Emission_Type_Updated == 'Methane'"
-          }
-        ]
-      },
-      {
-        "mark": {
-          "type": "text",
-          "align": "right",
-          "baseline": "bottom",
-          "dx": 390,
-          "dy": 250,
-          "fontSize": 12
-        },
-        "encoding": {
-          "text": {"field": "Emission_Info"}
-        },
-        "transform": [
-          {
-            "filter": "datum.Emission_Type_Updated == 'Nitrous Oxide'"
-          }
+        "tooltip": [
+          {"field": "Emission_Type_Updated", "type": "nominal", "title": "Emission Type"},
+          {"field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value"},
+          {"field": "Year", "type": "ordinal", "title": "Year"}
         ]
       }
-    ]
-  }
-  
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": 390,
+        "dy": 290,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"field": "Emission_Info"}
+      },
+      "transform": [
+        {
+          "filter": "datum.Emission_Type_Updated == 'Carbon Dioxide'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": 390,
+        "dy": 270,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"field": "Emission_Info"}
+      },
+      "transform": [
+        {
+          "filter": "datum.Emission_Type_Updated == 'Methane'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": 390,
+        "dy": 250,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"field": "Emission_Info"}
+      },
+      "transform": [
+        {
+          "filter": "datum.Emission_Type_Updated == 'Nitrous Oxide'"
+        }
+      ]
+    }
+  ]
+}

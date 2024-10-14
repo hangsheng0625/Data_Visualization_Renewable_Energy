@@ -1,8 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
+  "width": 1200,
   "height": 500,
-  "title": "Global Fossil Fuel Consumption by Type (1965-2023)",
+  "title": {
+    "text": "Global Fossil Fuel Consumption by Type (1965-2023)",
+    "color": "black"
+  },
+  "background": "null",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/fossil-fuel-consumption-by-fuel-type.csv",
     "format": {"type": "csv"}
@@ -17,7 +21,7 @@
       "as": "Energy Source"
     },
     {
-      "calculate": "round(datum.Consumption * 100) / 100", 
+      "calculate": "round(datum.Consumption * 100) / 100",
       "as": "Rounded Consumption"
     },
     {
@@ -25,51 +29,92 @@
       "groupby": ["Year", "Energy Source"]
     }
   ],
-  "mark": {
-    "type": "area",
-    "stroke": {"color": "black", "width": 1}  
-  },
-  "params": [
+  "layer": [
     {
-      "name": "graphSelect", 
-      "select": {"type": "point", "fields": ["Energy Source"]}  
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone"
+      },
+      "params": [
+        {
+          "name": "hover_area",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "axis": {
+            "title": "Year",
+            "labelColor": "black",
+            "titleColor": "black"
+          }
+        },
+        "y": {
+          "field": "Total Consumption",
+          "type": "quantitative",
+          "stack": "center",
+          "axis": {
+            "title": "Energy Consumption (TWh)",
+            "labelColor": "black",
+            "titleColor": "black"
+          }
+        },
+        "color": {
+          "field": "Energy Source",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Gas", "Coal", "Oil"],
+            "range": ["#257180", "#F2E5BF", "#FD8B51"]  
+          },
+          "legend": {
+            "title": "Energy Source",
+            "titleColor": "black",
+            "labelColor": "black"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover_area",
+            "value": 0.7
+          },
+          "value": 0.3
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "title": "Year", "timeUnit": "year", "format": "%Y"},
+          {"field": "Total Consumption", "type": "quantitative", "title": "Total Consumption (TWh)"},
+          {"field": "Energy Source", "type": "nominal", "title": "Energy Type"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "white",
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Total Consumption", "type": "quantitative", "stack": "center"},
+        "detail": {"field": "Energy Source", "type": "nominal"}
+      }
     }
   ],
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "temporal",
-      "axis": {"title": "Year"}
-    },
-    "y": {
-      "field": "Total Consumption",
-      "type": "quantitative",
-      "stack": "center",
-      "axis": {"title": "Energy Consumption (TWh)"}
-    },
-    "color": {
-      "field": "Energy Source",
-      "type": "nominal",
-      "scale": {"scheme": "category10"},
-      "legend": {"title": "Energy Source"}
-    },
-    "opacity": {
-      "condition": {
-        "param": "graphSelect",
-        "value": 0.7 
-      },
-      "value": 0.3 
-    },
-    "tooltip": [
-      {"field": "Year", "type": "temporal", "title": "Year", "timeUnit": "year", "format": "%Y"},
-      {"field": "Total Consumption", "type": "quantitative", "title": "Total Consumption (TWh)"},
-      {"field": "Energy Source", "type": "nominal", "title": "Energy Type"}
-    ]
-  },
   "config": {
     "area": {
-      "line": true,
+      "line": false,
       "opacity": 0.7
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "labelColor": "black",
+      "titleColor": "black"
     }
   }
 }

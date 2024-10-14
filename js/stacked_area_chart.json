@@ -1,99 +1,98 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Renewable Energy Generation by Source Over Time",
-    "width": 760,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/modern-renewable-energy-consumption.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Renewable Energy Generation by Source Over Time",
+  "width": 1000,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/modern-renewable-energy-consumption.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Other renewables (including geothermal and biomass) electricity generation - TWh",
+        "Solar generation - TWh",
+        "Wind generation - TWh",
+        "Hydro generation - TWh"
+      ],
+      "as": ["Electricity_source", "Value"]
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "stroke": "black",
+    "strokeWidth": 1
+  },
+  "params": [
+    {
+      "name": "source_highlight",
+      "select": {
+        "type": "point",
+        "fields": ["Electricity_source"]
+      },
+      "bind": "legend"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "axis": {
+        "grid": false,
+        "tickCount": 10
+      }
     },
-    "transform": [
-      {
-        "fold": [
-          "Other renewables (including geothermal and biomass) electricity generation - TWh",
-          "Solar generation - TWh",
+    "y": {
+      "aggregate": "sum",
+      "field": "Value",
+      "title": "Total Electricity Generation (TWh)",
+      "stack": "zero"  
+    },
+    "color": {
+      "field": "Electricity_source",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": [
+          "Hydro generation - TWh",  
           "Wind generation - TWh",
-          "Hydro generation - TWh"
+          "Solar generation - TWh",
+          "Other renewables (including geothermal and biomass) electricity generation - TWh"
         ],
-        "as": ["Electricity_source", "Value"]
+        "range": [
+          "#E6D385",
+          "#D25959",  
+          "#681313",  
+          "#5C7658"   
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "labelFontSize": 12,
+        "titleFontSize": 12
       }
-    ],
-    "mark": {
-      "type": "area",
-      "stroke": "black", 
-      "strokeWidth": 1    
     },
-    "params": [
+    "opacity": {
+      "condition": {"param": "source_highlight", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
       {
-        "name": "source_highlight",
-        "select": {
-          "type": "point",
-          "fields": ["Electricity_source"]
-        },
-        "bind": "legend"
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "temporal",
-        "axis": {
-          "grid": false,
-          "tickCount": 10
-        }
-      },
-      "y": {
-        "aggregate": "sum",
-        "field": "Value",
-        "title": "Total Electricity Generation (TWh)",
-        "stack": true
-      },
-      "color": {
         "field": "Electricity_source",
         "type": "nominal",
-        "title": null,
-        "scale": {
-          "domain": [
-            "Other renewables (including geothermal and biomass) electricity generation - TWh",
-            "Solar generation - TWh",
-            "Wind generation - TWh",
-            "Hydro generation - TWh"
-          ],
-          "range": [
-            "#a65628",
-            "#4daf4a",
-            "#377eb8",
-            "#984ea3"
-          ]
-        },
-        "legend": {
-          "orient": "right",
-          "labelFontSize": 12,
-          "titleFontSize": 12
-        }
+        "title": "Source of Electricity:"
       },
-      "opacity": {
-        "condition": {"param": "source_highlight", "value": 1},
-        "value": 0.2
+      {
+        "field": "Year",
+        "type": "temporal",
+        "format": "%Y",
+        "title": "Year:"
       },
-      "tooltip": [
-        {
-          "field": "Electricity_source",
-          "type": "nominal",
-          "title": "Source of Electricity:"
-        },
-        {
-          "field": "Year",
-          "type": "temporal",
-          "format": "%Y",
-          "title": "Year:"
-        },
-        {
-          "field": "Value",
-          "type": "quantitative",
-          "title": "Generation (TWh):",
-          "format": ".2f"
-        }
-      ]
-    }
+      {
+        "field": "Value",
+        "type": "quantitative",
+        "title": "Generation (TWh):",
+        "format": ".2f"
+      }
+    ]
   }
-  
+}
