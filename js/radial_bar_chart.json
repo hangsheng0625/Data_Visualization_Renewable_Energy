@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 900,
-  "height": 700,
+  "width": 600,
+  "height": 600,
   "padding": 5,
   "title": " Top 7 Deadliest Risk Factors ",
   "signals": [

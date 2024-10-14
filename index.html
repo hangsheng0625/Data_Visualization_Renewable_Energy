@@ -3,64 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualization</title>
+    <title>Renewable Energy Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-    <style>
-        body {
-            text-align: center;
-        }
-        .title-main {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        .chart-container {
-            margin-top: 50px;
-        }
-        .sankey-container {
-            display: flex; /* Use flexbox to arrange child elements in a row */
-            justify-content: space-around; /* Space them evenly */
-            margin-top: 50px; /* Optional: keep some margin above the Sankey charts */
-        }
-        .sankey-container > div {
-            flex: 1; /* Allow both charts to take equal space */
-            max-width: 400px; /* Optional: limit maximum width of each chart */
-            margin: 0 10px; /* Optional: add space between the charts */
-        }
-    </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
 </head>
 <body>
     <h1 class="title-main">Renewable Energy Visualization</h1>
-
     <div class="card">
         <div id="streamgraph" class="chart-container"></div>
-    </div>
-
-    <div class="card">
         <div id="radial_bar_chart" class="chart-container"></div>
-    </div>
-
-    <div class="card">
         <div id="polar_area_chart" class="chart-container"></div>
-    </div>
-
-    <div class="card">
         <div id="choropleth-map" class="chart-container"></div>
-    </div>
-
-    <div class="card">
         <div id="stacked_area_chart" class="chart-container"></div>
-    </div>
-
-    <div class="card">
         <div class="sankey-container chart-container">
             <div id="sankey_diagram_g_e"></div>
             <div id="sankey_diagram_e_g"></div>
         </div>
-    </div>
-
-    <div class="card">
         <div id="word_cloud" class="chart-container"></div>
     </div>
 
