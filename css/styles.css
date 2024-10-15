@@ -5,54 +5,71 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #f0f0f0;
-    padding: 40;
+    padding: 40px;
     font-family: sans-serif;
     margin: 0;
 }
+
 .title-main {
-    font-size: 70px; 
-    font-family: 'serif';  
-    color: #000000 !important; /* Force desired color */
-    text-align: center; 
-    margin-bottom: 20px; 
+    font-size: 70px;
+    font-family: 'serif';
+    color: #000000 !important;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 .card {
     background: linear-gradient(#FCFAEE, #FCFAEE);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    margin: 20px;
     padding: 20px;
     width: 100%;
     max-width: 1700px;
     transition: box-shadow 0.3s ease;
 }
-.card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-    transform: rotate(30deg);
-    pointer-events: none;}
+
 .card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-.chart-container {
-    margin-top: 20px;
+
+.charts-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
     width: 100%;
 }
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+    min-width: 300px;
+}
+
+#polar_area_chart {
+    order: 2; /* Move polar area chart to the right */
+}
+
+#radial_bar_chart {
+    order: 1; /* Move radial bar chart to the left */
+}
+
 .sankey-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin: 20px 0;
 }
+
 .sankey-container > div {
     flex: 1;
     min-width: 300px;
-    margin: 0 10px 20px;
+    margin: 0 10px;
 }
+
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -60,6 +77,7 @@ body {
     width: 100%;
     max-width: 900px;
 }
+
 .nav-button {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -69,6 +87,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .nav-button:hover {
     background-color: #45a049;
 }
