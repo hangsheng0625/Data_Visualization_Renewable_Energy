@@ -83,7 +83,7 @@ body {
 
 .sankey-container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
     margin: 20px 0; /* Increased margin for the entire Sankey diagram */
 }
@@ -92,6 +92,7 @@ body {
     flex: 1;
     min-width: 300px;
     margin: 0 10px; /* Increased space between individual sankey chart components */
+    text-align: left; /* Align text inside each Sankey diagram to the left */
 }
 
 p {
