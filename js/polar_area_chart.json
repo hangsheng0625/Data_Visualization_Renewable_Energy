@@ -84,7 +84,7 @@
           "legend": {
             "labelFontSize": 14, 
             "titleFontSize": 16, 
-            "title": "Emission Gas" 
+            "title": "Emission Gas"
           }
         },
         "tooltip": [
@@ -92,24 +92,7 @@
           { "field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value" },
           { "field": "Year", "type": "ordinal", "title": "Year" }
         ]
-      },
-      "on": [
-        {
-          "events": "mouseover",
-          "update": "lightyellow" 
-        },
-        {
-          "events": "mouseout",
-          "update": {
-            "field": "Emission_Type_Updated",
-            "type": "nominal",
-            "scale": {
-              "domain": ["Carbon Dioxide", "Methane", "Nitrous Oxide"],
-              "range": ["#D83F31", "#EE9322", "#FCE09B"]  
-            }
-          }
-        }
-      ]
+      }
     },
     {
       "mark": {
@@ -164,41 +147,6 @@
           "filter": "datum.Emission_Type_Updated == 'Nitrous Oxide'"
         }
       ]
-    }
-  ],
-  "vconcat": [
-    {
-      "resolve": { "scale": { "theta": "independent" } }
-    },
-    {
-      "mark": "text",
-      "encoding": {
-        "text": {
-          "value": "Select Year"
-        }
-      },
-      "configure": {
-        "fontSize": 14,
-        "color": "black",
-        "fontWeight": "bold"
-      },
-      "y": {
-        "value": 370
-      }
-    },
-    {
-      "mark": {
-        "type": "input",
-        "input": "range",
-        "min": 1965,
-        "max": 2022,
-        "step": 1,
-        "value": 2022,
-        "bind": "yearFilter"
-      },
-      "y": {
-        "value": 385
-      }
     }
   ]
 }

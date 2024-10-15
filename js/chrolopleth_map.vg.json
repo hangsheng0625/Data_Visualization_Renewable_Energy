@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1400,
+  "width": 1200,
   "height": 600,
   "background": "transparent",
   "config": {
@@ -113,7 +113,13 @@
             "domain": [0, 100],
             "range": ["#ffffd4", "#fed98e", "#fe9929", "#d95f0e", "#993404"]
           },
-          "title": "Renewable Energy Share (%)"
+          "title": "Renewable Energy Share (%)",
+          "legend": {
+            "orient": "right",
+            "direction": "vertical",
+            "gradientLength": 400,
+            "offset": 20
+          }
         },
         "tooltip": [
           { "field": "Entity", "type": "nominal", "title": "Country" },
@@ -135,7 +141,6 @@
         "text": { "field": "Year_selection" }
       }
     },
-
     {
       "data": {
         "values": [
