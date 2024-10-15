@@ -26,6 +26,18 @@ body {
     padding: 20px;
 }
 
+.title-image {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+}
+
+#left-image {
+    margin-right: 20px; /* Space between left image and title */
+}
+
+#right-image {
+    margin-left: 20px; /* Space between right image and title */
+}
 .title-main {
     font-size: 110px;
     font-family: 'serif';
@@ -33,6 +45,13 @@ body {
     text-align: center;
     margin-bottom: 10px;
     white-space: nowrap;
+}
+
+.title-main-wrapper {
+    display: flex;
+    align-items: center; /* Vertically aligns images with the title */
+    justify-content: center; /* Centers the content horizontally */
+    margin-bottom: 20px;
 }
 
 .card {
