@@ -29,7 +29,7 @@
     {
       "name": "input",
       "values": [
-        {"category": "Greenhouse Gas Emissions", "stack": 1, "sort": 1, "labels": "left"},
+        {"category": "Greenhouse Gas Emissions", "stack": 1, "sort": 1, "labels": "middle"},
         {"category": "Coal", "stack": 2, "sort": 1, "labels": "middle"},
         {"category": "Oil", "stack": 2, "sort": 2, "labels": "middle"},
         {"category": "Natural Gas", "stack": 2, "sort": 3, "labels": "middle"},

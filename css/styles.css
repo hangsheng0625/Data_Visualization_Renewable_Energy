@@ -26,18 +26,6 @@ body {
     padding: 20px;
 }
 
-.title-image {
-    width: 80px; /* Adjust size as needed */
-    height: auto;
-}
-
-#left-image {
-    margin-right: 20px; /* Space between left image and title */
-}
-
-#right-image {
-    margin-left: 20px; /* Space between right image and title */
-}
 .title-main {
     font-size: 110px;
     font-family: 'serif';
@@ -84,6 +72,11 @@ body {
     text-align: center;
     font-family: sans-serif;
     font-size: 36px;
+    
+}
+.graph {
+    flex: 1; /* Allow each graph to take up equal space */
+    margin: 0 10px; /* Optional: Margin between the graphs */
 }
 
 .card:hover {
@@ -139,7 +132,7 @@ body {
     flex: 1;
     min-width: 300px;
     margin: 0 10px; /* Increased space between individual sankey chart components */
-    text-align: left; /* Align text inside each Sankey diagram to the left */
+    text-align: right; /* Align text inside each Sankey diagram to the left */
 }
 
 p {
