@@ -15,23 +15,23 @@
 </head>
 <body>
     <h1 class="title-main">Renewable Energy</h1>
+    
     <div class="card">
         <div id="streamgraph" class="chart-container"></div>
-        <div class="charts-wrapper">
-            <div id="polar_area_chart" class="chart-container"></div>
-        </div>
-        <div class="charts-wrapper">
-            <div id="radial_bar_chart" class="chart-container"></div>
-        </div>
+        <div id="polar_area_chart" class="chart-container"></div>
+        <div id="word_cloud" class="chart-container"></div>
+    </div>
+
+    <div class="card">
         <div id="choropleth-map" class="chart-container"></div>
         <div id="stacked_area_chart" class="chart-container"></div>
         <div class="sankey-container chart-container">
             <div id="sankey_diagram_g_e"></div>
             <div id="sankey_diagram_e_g"></div>
         </div>
-        <div id="word_cloud" class="chart-container"></div>
+        <div id="radial_bar_chart" class="chart-container"></div>
     </div>
-    
+
     <script>
         function embedChart(elementId, url) {
             fetch(url)
