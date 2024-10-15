@@ -3,6 +3,10 @@
   "width": 1400,
   "height": 600,
   "background": "transparent",
+    "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
+  },
   "title": {
     "text": "Global Renewable Energy Share (% of Equivalent Primary Energy)",
     "color": "#07031A",

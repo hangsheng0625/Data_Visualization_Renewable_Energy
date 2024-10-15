@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 600,
+  "width": 1000,
+  "height": 400,
   "title": {
     "text": "Greenhouse Gas Global Emissions",
     "color": "#07031A",
@@ -55,7 +55,8 @@
       "mark": {
         "type": "arc",
         "innerRadius": 40,
-        "stroke": "navy" 
+        "strokeWidth": 2,
+        "tooltip": true
       },
       "encoding": {
         "theta": {
@@ -81,9 +82,9 @@
             "range": ["#D83F31", "#EE9322", "#FCE09B"]
           },
           "legend": {
-            "title": "Emission Type",
-            "orient": "right",
-            "offset": 5
+            "labelFontSize": 14, 
+            "titleFontSize": 16, 
+            "title": "Emission Gas" 
           }
         },
         "tooltip": [
@@ -91,7 +92,24 @@
           { "field": "Emission_Value_Formatted", "type": "nominal", "title": "Emission Value" },
           { "field": "Year", "type": "ordinal", "title": "Year" }
         ]
-      }
+      },
+      "on": [
+        {
+          "events": "mouseover",
+          "update": "lightyellow" 
+        },
+        {
+          "events": "mouseout",
+          "update": {
+            "field": "Emission_Type_Updated",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Carbon Dioxide", "Methane", "Nitrous Oxide"],
+              "range": ["#D83F31", "#EE9322", "#FCE09B"]  
+            }
+          }
+        }
+      ]
     },
     {
       "mark": {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 600,
-  "height": 600,
+  "width": 400,
+  "height": 400,
   "padding": 5,
   "title": {
     "text": "Top 5 Deadliest Risk Factors",
@@ -12,7 +12,6 @@
     "offset": 30,
     "anchor": "middle"
   },
-  
   "background": "transparent",
   "signals": [
     {
@@ -74,7 +73,28 @@
         "field": "Type",
         "sort": {"field": "Total_Number", "order": "ascending"}
       },
-      "range": ["#FF9130", "#D69500", "#BF6400", "#A13300", "#820300"]
+      "range": [
+        "#FFE700", 
+        "#FFB000", 
+        "#BF6400", 
+        "#A13300", 
+        "#820300" 
+      ]
+    },
+    {
+      "name": "borderColorScale",
+      "type": "ordinal",
+      "domain": {
+        "data": "table",
+        "field": "Type"
+      },
+      "range": [
+        "#FFE700", 
+        "#FFB000", 
+        "#BF6400", 
+        "#A13300", 
+        "#820300"  
+      ]
     }
   ],
   "marks": [
@@ -91,7 +111,10 @@
             "scale": "colorScale", 
             "field": "Type"
           },
-          "stroke": {"value": "#003366 "}, 
+          "stroke": {
+            "scale": "borderColorScale", 
+            "field": "Type"  
+          },
           "strokeWidth": {"value": 2}, 
           "startAngle": {"value": 0},
           "endAngle": {"scale": "angleScale", "field": "Total_Number"},
@@ -117,7 +140,13 @@
           }
         ],
         "hover": {
-          "fill": {"value": "lightyellow"}
+          "fill": {"value": "lightyellow"},
+          "outerRadius": {
+            "scale": "typeScale",
+            "field": "Type",
+            "offset": {"scale": "typeScale", "band": 1},
+            "multiplier": 1.9 
+          }
         }
       }
     },
