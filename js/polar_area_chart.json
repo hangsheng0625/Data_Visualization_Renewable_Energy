@@ -79,7 +79,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Carbon Dioxide", "Methane", "Nitrous Oxide"],
-            "range": ["#D83F31", "#EE9322", "#FCE09B"]
+            "range": ["#D83F31", "#EE9322", "#54400b"]
           },
           "legend": {
             "labelFontSize": 14,
