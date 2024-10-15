@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Renewable Energy Generation by Source Over Time",
+    "text": "Renewable Energy Generation ",
     "color": "#311e03",
     "fontSize": 32,
     "font": "sans-serif",
