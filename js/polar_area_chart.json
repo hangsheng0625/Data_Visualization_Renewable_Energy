@@ -82,8 +82,8 @@
             "range": ["#D83F31", "#EE9322", "#FCE09B"]
           },
           "legend": {
-            "labelFontSize": 14, 
-            "titleFontSize": 16, 
+            "labelFontSize": 14,
+            "titleFontSize": 16,
             "title": "Emission Gas"
           }
         },
@@ -93,60 +93,6 @@
           { "field": "Year", "type": "ordinal", "title": "Year" }
         ]
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "bottom",
-        "dx": 390,
-        "dy": 290,
-        "fontSize": 12
-      },
-      "encoding": {
-        "text": { "field": "Emission_Info" }
-      },
-      "transform": [
-        {
-          "filter": "datum.Emission_Type_Updated == 'Carbon Dioxide'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "bottom",
-        "dx": 390,
-        "dy": 270,
-        "fontSize": 12
-      },
-      "encoding": {
-        "text": { "field": "Emission_Info" }
-      },
-      "transform": [
-        {
-          "filter": "datum.Emission_Type_Updated == 'Methane'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "bottom",
-        "dx": 390,
-        "dy": 250,
-        "fontSize": 12
-      },
-      "encoding": {
-        "text": { "field": "Emission_Info" }
-      },
-      "transform": [
-        {
-          "filter": "datum.Emission_Type_Updated == 'Nitrous Oxide'"
-        }
-      ]
     }
   ]
 }

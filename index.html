@@ -16,6 +16,13 @@
         body, p {
             font-family: serif;
         }
+        .card {
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            padding: 16px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -29,20 +36,56 @@
         </div>
     </div>
 
+    <!-- Card for Streamgraph -->
     <div class="card">
         <div id="streamgraph" class="chart-container"></div>
-        <div class="charts-wrapper">
-            <div id="polar_area_chart" class="chart-container"></div>
-        </div>
+        <p>The graph focus on three primary energy sources: <b>gas</b>, <b>coal</b> and <b>oil</b> . Over the years, there's been a notable shift in energy consumption patterns. Gas consumption has steadily increased, becoming the dominant energy source in recent decades. Coal consumption, once the primary source, has declined, though it still plays a significant role. Oil consumption, while fluctuating, has remained relatively stable. .</p>
+    </div>
+
+    <!-- Card for Polar Area Chart -->
+    <div class="card">
+        <div id="polar_area_chart" class="chart-container"></div>
+        <p><b>Carbon Dioxide</b> is the most significant greenhouse gas emitted globally, contributing to a substantial portion of the total emissions throughout these years, followed by <b>Methane</b> and <b>Nitrous Oxide </b></p>
+    </div>
+
+    <!-- Card for Word Cloud -->
+    <div class="card">
         <div id="word_cloud" class="chart-container"></div>
+    </div>
+
+    <!-- Card for Choropleth Map -->
+    <div class="card">
         <div id="choropleth-map" class="chart-container"></div>
+    </div>
+
+    <!-- Card for Stacked Area Chart -->
+    <div class="card">
         <div id="stacked_area_chart" class="chart-container"></div>
-        <div class="sankey-container chart-container">
-            <div id="sankey_diagram_g_e"></div>
-            <div id="sankey_diagram_e_g"></div>
+        <p> This stacked area chart displays the rise in global renewable energy generation over these years <b>Hydro generation</b> remains the dominant source, but <b>solar energy </b> has surged significantly, especially in recent years. <b> Wind energy</b>has also increased steadily, highlighting a growing commitment to renewable energy in the global energy mix.</p>
+    </div>
+
+    <!-- Card for Sankey Diagrams -->
+    <div class="card">
+        <div id="sankey_diagram_g_e" class="chart-container"></div>
+        <div id="sankey_diagram_e_g" class="chart-container"></div>
+    </div>
+
+    <!-- Card for Radial Bar Chart -->
+    <div class="card">
+        <div id="radial_bar_chart" class="chart-container"></div>
+        <p>According to the study conducted by ourworldindata, <b>air pollution</b is ranked as the second dangerous risk factor in 2021p>
+    </div>
+
+    <div class="metadata">
+        <div class="left-section">
+            <p>Created by: Liaw Hang Sheng<br>
+            Contact: <a href="mailto:youremail@example.com">hangsheng279@gmail.com</a><br>
+            Last updated: 14 October 2024</p>
         </div>
-        <div class="charts-wrapper">
-            <div id="radial_bar_chart" class="chart-container"></div>
+        <div class="right-section">
+            <p>© 2024 Liaw Hang Sheng. All rights reserved.</p>
+            <p>Data source:<br>
+            <a href="https://ourworldindata.org/">https://ourworldindata.org/</a></p>
         </div>
     </div>
 

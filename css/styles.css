@@ -3,11 +3,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centers content vertically */
     background-color: #f0f0f0;
     padding: 40px;
     font-family: sans-serif;
     margin: 0;
+    min-height: 100vh; /* Ensures body takes up full viewport height */
 }
 
 .container {
@@ -30,11 +31,12 @@ body {
     background: linear-gradient(#FCFAEE, #FCFAEE);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    margin: 10px;
     padding: 20px;
-    width: 100%;
-    max-width: 1900px;
+    width: 100%; /* Full width of its container */
+    max-width: 1900px; /* Maximum width for the card */
     transition: box-shadow 0.3s ease;
+    text-align: center; 
 }
 
 .card:hover {
@@ -83,11 +85,18 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 40px 0; /* Increased margin for the entire Sankey diagram */
+    margin: 20px 0; /* Increased margin for the entire Sankey diagram */
 }
 
 .sankey-container > div {
     flex: 1;
     min-width: 300px;
-    margin: 20px; /* Increased space between individual sankey chart components */
+    margin: 0 10px; /* Increased space between individual sankey chart components */
+}
+
+p {
+    font-family: sans-serif; /* Change to your preferred font */
+    font-size: 20px; /* Change to your desired size */
+    text-align: center; /* Align text to the left */
+    line-height: 1.5; /* Optional: improve readability with line height */
 }
