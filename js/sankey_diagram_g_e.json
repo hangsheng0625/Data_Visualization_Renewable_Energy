@@ -6,7 +6,7 @@
   "title": {
     "text": "Greenhouse gas emissions",
     "color": "#311e03",
-    "fontSize": 32,
+    "fontSize": 16,
     "font": "sans-serif",
     "dy": 0,
     "fontWeight": "bold",
