@@ -113,13 +113,7 @@
             "domain": [0, 100],
             "range": ["#ffffd4", "#fed98e", "#fe9929", "#d95f0e", "#993404"]
           },
-          "title": "Renewable Energy Share (%)",
-          "legend": {
-            "orient": "right",
-            "direction": "vertical",
-            "gradientLength": 400,
-            "offset": 20
-          }
+          "title": "Renewable Energy Share (%)"
         },
         "tooltip": [
           { "field": "Entity", "type": "nominal", "title": "Country" },
@@ -141,6 +135,7 @@
         "text": { "field": "Year_selection" }
       }
     },
+
     {
       "data": {
         "values": [

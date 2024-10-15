@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "title": {
-    "text": "Greenhouse gas emissions Categories",
+    "text": "Where do Greenhouse Gases come from？",
     "color": "#311e03",
     "fontSize": 32,
     "font": "sans-serif",
