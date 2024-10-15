@@ -6,9 +6,9 @@
   "config": {
     "view": { "stroke": null },
     "axis": {
-      "domain": false,  
-      "ticks": false,   
-      "labels": false   
+      "domain": false,
+      "ticks": false,
+      "labels": false
     }
   },
   "title": {
@@ -136,11 +136,12 @@
       }
     },
 
+
     {
       "data": {
         "values": [
           { "longitude": 57.5, "latitude": 61 }, 
-          { "longitude": 8.4689, "latitude": 27.4720 } 
+          { "longitude": 4.4689, "latitude": 27.4720 } 
         ]
       },
       "mark": {
@@ -156,7 +157,7 @@
     {
       "data": {
         "values": [
-          { "longitude": 82, "latitude": 35 }, 
+          { "longitude": 87, "latitude": 35 }, 
           { "longitude": 101.9758, "latitude": 4.2105 } 
         ]
       },
