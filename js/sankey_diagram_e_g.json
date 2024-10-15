@@ -36,7 +36,7 @@
         {"category": "Wind", "stack": 1, "sort": 5, "labels": "middle"},
         {"category": "Solar", "stack": 1, "sort": 6, "labels": "middle"},
         {"category": "Others", "stack": 1, "sort": 7, "labels": "middle"},
-        {"category": "Global Electricity", "stack": 2, "sort": 1, "labels": "middle"},
+        {"category": "Global Electricity", "stack": 2, "sort": 1, "labels": "right"},
         {
           "source": "Coal",
           "destination": "Global Electricity",
