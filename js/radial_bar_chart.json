@@ -4,6 +4,7 @@
   "height": 600,
   "padding": 5,
   "title": " Top 7 Deadliest Risk Factors ",
+  "background": "white",
   "signals": [
     {
       "name": "padAngle", "value": 0.02
@@ -65,8 +66,8 @@
         "sort": {"field": "Total_Number", "order": "ascending"}
       },
       "range": [
-        "#DF7280", "#747C65", "#FFA07A", "#844D4D", 
-        "#B9B3BF", "#E9FFF9", "#515843" 
+        "#DF7280", "#844D4D", 
+        "#B9B3BF", "#FFA07A", "#515843"
       ]
     }
   ],

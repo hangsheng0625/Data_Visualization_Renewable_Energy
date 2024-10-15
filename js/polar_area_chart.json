@@ -3,7 +3,7 @@
   "width": 600,
   "height": 600,
   "title": "Greenhouse Gas Global Emissions",
-  "background": "transparent",
+  "background": "white",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/filtered-ghg-emissions-by-gas.csv"
   },

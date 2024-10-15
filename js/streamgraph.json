@@ -6,7 +6,7 @@
     "text": "Global Fossil Fuel Consumption by Type (1965-2023)",
     "color": "black"
   },
-  "background": "#e0f7fa",
+  "background": "white",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/fossil-fuel-consumption-by-fuel-type.csv",
     "format": {"type": "csv"}

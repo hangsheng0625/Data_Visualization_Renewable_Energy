@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 .card {
-    background-color: linear-gradient(to right, #e0f7fa, #fae89f);
+    background: linear-gradient(#FCFAEE, #DEE5D4);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
@@ -19,6 +19,16 @@ body {
     max-width: 1500px;
     transition: box-shadow 0.3s ease;
 }
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(30deg);
+    pointer-events: none;}
 .card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
