@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "title": {
     "text": "Greenhouse gas emissions Categories",
-    "color": "#07031A",
+    "color": "#311e03",
     "fontSize": 32,
     "font": "sans-serif",
     "dy": 0,
@@ -149,7 +149,7 @@
             "update": {
               "x": {"value": 6},
               "y": {"value": 32},
-              "text": {"signal": "tooltip.value ? 'Percentage: ' + tooltip.value : ''"},
+              "text": {"signal": "tooltip.value ? 'Proportion: ' + tooltip.value + '%' : ''"},
               "fill": {"value": "black"},
               "fontWeight": {"value": "normal"}
             }

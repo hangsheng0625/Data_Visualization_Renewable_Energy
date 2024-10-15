@@ -12,24 +12,38 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
     
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+    <style>
+        body, p {
+            font-family: serif;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="title-main">Renewable Energy</h1>
-    
-    <div class="card">
-        <div id="streamgraph" class="chart-container"></div>
-        <div id="polar_area_chart" class="chart-container"></div>
-        <div id="word_cloud" class="chart-container"></div>
+    <div class="container">
+        <h1 class="title-main">Renewable Energy</h1>
+        <div class="intro-paragraph">
+            <p>
+                Since the Industrial Revolution, fossil fuels have dominated global energy, causing severe climate and health issues. They produce three-quarters of CO2 emissions and contribute to over 5 million premature deaths annually. 
+                This visualization highlights the growth of renewable energy sources such as solar, wind, and hydro, showing their contribution to reducing CO2 emissions and the ongoing transition to a sustainable energy future.
+            </p>
+        </div>
     </div>
 
     <div class="card">
+        <div id="streamgraph" class="chart-container"></div>
+        <div class="charts-wrapper">
+            <div id="polar_area_chart" class="chart-container"></div>
+        </div>
+        <div id="word_cloud" class="chart-container"></div>
         <div id="choropleth-map" class="chart-container"></div>
         <div id="stacked_area_chart" class="chart-container"></div>
         <div class="sankey-container chart-container">
             <div id="sankey_diagram_g_e"></div>
             <div id="sankey_diagram_e_g"></div>
         </div>
-        <div id="radial_bar_chart" class="chart-container"></div>
+        <div class="charts-wrapper">
+            <div id="radial_bar_chart" class="chart-container"></div>
+        </div>
     </div>
 
     <script>

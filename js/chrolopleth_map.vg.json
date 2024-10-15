@@ -3,13 +3,17 @@
   "width": 1400,
   "height": 600,
   "background": "transparent",
-    "config": {
-    "view": {"stroke": null},
-    "axis": {"grid": false}
+  "config": {
+    "view": { "stroke": null },
+    "axis": {
+      "domain": false,  
+      "ticks": false,   
+      "labels": false   
+    }
   },
   "title": {
-    "text": "Global Renewable Energy Share (% of Equivalent Primary Energy)",
-    "color": "#07031A",
+    "text": "Global Renewable Energy Share ",
+    "color": "#311e03",
     "fontSize": 32,
     "font": "sans-serif",
     "dy": 0,
@@ -17,8 +21,7 @@
     "offset": 30,
     "anchor": "middle"
   },
-  
-  "projection": {"type": "equalEarth"},
+  "projection": { "type": "equalEarth" },
   "params": [
     {
       "name": "Year_selection",
@@ -36,10 +39,7 @@
     {
       "data": {
         "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
-        "format": {
-          "type": "topojson",
-          "feature": "oceans"
-        }
+        "format": { "type": "topojson", "feature": "oceans" }
       },
       "mark": {
         "type": "geoshape",
@@ -63,7 +63,7 @@
     {
       "data": {
         "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/ne_110m_admin_0_countries.json",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
       },
       "transform": [
         {
@@ -96,16 +96,16 @@
           "from": {
             "data": {
               "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/js/ne_110m_admin_0_countries.json",
-              "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+              "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
             },
             "key": "properties.NAME",
             "fields": ["type", "geometry", "properties"]
           }
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "navy", "strokeWidth": 0.5},
+      "mark": { "type": "geoshape", "stroke": "navy", "strokeWidth": 0.5 },
       "encoding": {
-        "shape": {"field": "geometry", "type": "geojson"},
+        "shape": { "field": "geometry", "type": "geojson" },
         "color": {
           "field": "Renewables (% equivalent primary energy)",
           "type": "quantitative",
@@ -116,23 +116,76 @@
           "title": "Renewable Energy Share (%)"
         },
         "tooltip": [
-          {"field": "Entity", "type": "nominal", "title": "Country"},
+          { "field": "Entity", "type": "nominal", "title": "Country" },
           {
             "field": "Renewables (% equivalent primary energy)",
             "type": "quantitative",
             "title": "Renewable Energy Share(%)",
             "format": ".2f"
           },
-          {"field": "Year", "type": "ordinal", "title": "Year"}
+          { "field": "Year", "type": "ordinal", "title": "Year" }
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 16, "fontWeight": "bold"},
+      "mark": { "type": "text", "fontSize": 16, "fontWeight": "bold" },
       "encoding": {
-        "x": {"value": 400},
-        "y": {"value": 30},
-        "text": {"field": "Year_selection"}
+        "x": { "value": 400 },
+        "y": { "value": 30 },
+        "text": { "field": "Year_selection" }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          { "longitude": 57.5, "latitude": 61 }, 
+          { "longitude": 8.4689, "latitude": 27.4720 } 
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "color": "red",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": { "field": "longitude", "type": "quantitative" },
+        "y": { "field": "latitude", "type": "quantitative" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "longitude": 82, "latitude": 35 }, 
+          { "longitude": 101.9758, "latitude": 4.2105 } 
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "color": "red",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": { "field": "longitude", "type": "quantitative" },
+        "y": { "field": "latitude", "type": "quantitative" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "longitude": 12.4689, "latitude": 26.4720, "text": "Norway has the highest share of renewable energy over these years." },
+          { "longitude": 101.9758, "latitude": 4.2105, "text": "Malaysia's renewable energy share is growing." }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "color": "black"
+      },
+      "encoding": {
+        "x": { "field": "longitude", "type": "quantitative" },
+        "y": { "field": "latitude", "type": "quantitative" },
+        "text": { "field": "text" }
       }
     }
   ]

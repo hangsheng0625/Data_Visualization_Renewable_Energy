@@ -4,7 +4,7 @@
   "height": 400,
   "title": {
     "text": "Greenhouse Gas Global Emissions",
-    "color": "#07031A",
+    "color": "#311e03",
     "fontSize": 32,
     "font": "sans-serif",
     "dy": 0,
@@ -164,6 +164,41 @@
           "filter": "datum.Emission_Type_Updated == 'Nitrous Oxide'"
         }
       ]
+    }
+  ],
+  "vconcat": [
+    {
+      "resolve": { "scale": { "theta": "independent" } }
+    },
+    {
+      "mark": "text",
+      "encoding": {
+        "text": {
+          "value": "Select Year"
+        }
+      },
+      "configure": {
+        "fontSize": 14,
+        "color": "black",
+        "fontWeight": "bold"
+      },
+      "y": {
+        "value": 370
+      }
+    },
+    {
+      "mark": {
+        "type": "input",
+        "input": "range",
+        "min": 1965,
+        "max": 2022,
+        "step": 1,
+        "value": 2022,
+        "bind": "yearFilter"
+      },
+      "y": {
+        "value": 385
+      }
     }
   ]
 }
