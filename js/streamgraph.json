@@ -82,7 +82,9 @@
           "legend": {
             "title": "Energy Source",
             "titleColor": "black",
-            "labelColor": "black"
+            "labelColor": "black",
+            "titleFontSize": 16,
+            "labelFontSize": 14   
           }
         },
         "opacity": {

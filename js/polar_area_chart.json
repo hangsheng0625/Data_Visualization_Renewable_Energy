@@ -55,7 +55,7 @@
       "mark": {
         "type": "arc",
         "innerRadius": 40,
-        "stroke": "white" 
+        "stroke": "navy" 
       },
       "encoding": {
         "theta": {
