@@ -5,11 +5,13 @@
   "padding": {"bottom": 20, "left": 20, "right": 30, "top": 40},
   "title": {
     "text": "Global Electricity Share",
-    "color": "#005ca5",
+    "color": "#07031A",
     "fontSize": 32,
+    "font": "sans-serif",
     "dy": 0,
     "fontWeight": "bold",
-    "offset": 30
+    "offset": 30,
+    "anchor": "middle"
   },
   "signals": [
     {

@@ -1,9 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Renewable Energy Generation by Source Over Time",
+  "title": {
+    "text": "Renewable Energy Generation by Source Over Time",
+    "color": "#07031A",
+    "fontSize": 32,
+    "font": "sans-serif",
+    "dy": 0,
+    "fontWeight": "bold",
+    "offset": 30,
+    "anchor": "middle"
+  },
   "width": 1000,
   "height": 500,
-  "background": "white",
+  "background": "transparent",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/modern-renewable-energy-consumption.csv"
   },
@@ -16,11 +25,15 @@
         "Hydro generation - TWh"
       ],
       "as": ["Electricity_source", "Value"]
+    },
+    {
+      "calculate": "datum.Electricity_source === 'Hydro generation - TWh' ? 'Hydro Generation' : datum.Electricity_source === 'Wind generation - TWh' ? 'Wind Generation' : datum.Electricity_source === 'Solar generation - TWh' ? 'Solar Generation' : datum.Electricity_source === 'Other renewables (including geothermal and biomass) electricity generation - TWh' ? 'Others' : datum.Electricity_source",
+      "as": "Electricity_source"
     }
   ],
   "mark": {
     "type": "area",
-    "stroke": "black",
+    "stroke": "white",
     "strokeWidth": 1
   },
   "params": [
@@ -46,7 +59,7 @@
       "aggregate": "sum",
       "field": "Value",
       "title": "Total Electricity Generation (TWh)",
-      "stack": "zero"  
+      "stack": "zero"
     },
     "color": {
       "field": "Electricity_source",
@@ -54,22 +67,25 @@
       "title": null,
       "scale": {
         "domain": [
-          "Hydro generation - TWh",  
-          "Wind generation - TWh",
-          "Solar generation - TWh",
-          "Other renewables (including geothermal and biomass) electricity generation - TWh"
+          "Hydro Generation",  
+          "Wind Generation",
+          "Solar Generation",
+          "Others"
         ],
         "range": [
-          "#E6D385",
-          "#D25959",  
-          "#681313",  
-          "#5C7658"   
+          "#F7B787", 
+          "#FF9800", 
+          "#5F8670",  
+          "#B80000"   
         ]
       },
       "legend": {
+        "title": "Renewable Energy",
         "orient": "right",
-        "labelFontSize": 12,
-        "titleFontSize": 12
+        "titleColor": "black",
+        "labelColor": "black",
+        "labelFontSize": 16,
+        "titleFontSize": 18
       }
     },
     "opacity": {

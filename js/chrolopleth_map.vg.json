@@ -2,17 +2,18 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 1200,
   "height": 600,
-  "background": "#f8f8f8",
+  "background": "transparent",
   "title": {
     "text": "Global Renewable Energy Share (% of Equivalent Primary Energy)",
-    "subtitle": "Use the slider to change the year. Gray areas indicate no data available.",
-    "font": "serif",
-    "fontSize": 17,
-    "align": "center",
-    "subtitleFont": "serif",
-    "subtitleFontSize": 14,
-    "subtitleColor": "gray"
+    "color": "#07031A",
+    "fontSize": 32,
+    "font": "sans-serif",
+    "dy": 0,
+    "fontWeight": "bold",
+    "offset": 30,
+    "anchor": "middle"
   },
+  
   "projection": {"type": "equalEarth"},
   "params": [
     {

@@ -3,10 +3,17 @@
   "width": 1200,
   "height": 500,
   "title": {
-    "text": "Global Fossil Fuel Consumption by Type (1965-2023)",
-    "color": "black"
+    "text": "Global Fossil Fuel Consumption by Type",
+    "color": "#07031A",
+    "fontSize": 32,
+    "font": "sans-serif",
+    "dy": 0,
+    "fontWeight": "bold",
+    "offset": 30,
+    "anchor": "middle"
   },
-  "background": "white",
+  
+  "background": "#FCFAEE",
   "data": {
     "url": "https://raw.githubusercontent.com/hangsheng0625/Data_Visualization_Renewable_Energy/main/data/fossil-fuel-consumption-by-fuel-type.csv",
     "format": {"type": "csv"}
@@ -70,7 +77,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Gas", "Coal", "Oil"],
-            "range": ["#257180", "#F2E5BF", "#FD8B51"]  
+            "range": ["#B80000", "#FF9800", "#5F8670"]  
           },
           "legend": {
             "title": "Energy Source",

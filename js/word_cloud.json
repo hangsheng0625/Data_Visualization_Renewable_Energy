@@ -1,10 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "A word cloud visualization of greenhouse gas emission categories with hover tooltip.",
+  "title": {
+    "text": "Greenhouse gas emissions Categories",
+    "color": "#07031A",
+    "fontSize": 32,
+    "font": "sans-serif",
+    "dy": 0,
+    "fontWeight": "bold",
+    "offset": -70,
+    "anchor": "middle"
+  },
   "width": 800,
   "height": 600,
   "padding": 5,
-  "background": "white",
+  "background": "transparent",
   "data": [
     {
       "name": "table",
@@ -46,7 +55,7 @@
       "name": "color",
       "type": "linear",
       "domain": {"data": "table", "field": "value"},
-      "range": ["#CECE5A", "#FFE17B", "#FD8D14", "#C51605"]
+      "range": ["#CD5C08", "#FFB000", "#FD8D14", "#C51605"]
     },
     {
       "name": "size",
@@ -148,13 +157,5 @@
         }
       ]
     }
-  ],
-
-  "title": {
-    "text": "Greenhouse Gas Emission Categories",
-    "fontSize": 20,
-    "subtitleFontSize": 14,
-    "font": "Helvetica Neue, Arial",
-    "color": "#333"
-  }
+  ]
 }

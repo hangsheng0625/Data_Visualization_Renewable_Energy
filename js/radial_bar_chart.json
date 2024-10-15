@@ -3,8 +3,17 @@
   "width": 600,
   "height": 600,
   "padding": 5,
-  "title": " Top 7 Deadliest Risk Factors ",
-  "background": "white",
+  "title": {
+    "text": "Top 5 Deadliest Risk Factors",
+    "color": "#07031A",
+    "fontSize": 32,
+    "dy": 0,
+    "fontWeight": "bold",
+    "offset": 30,
+    "anchor": "middle"
+  },
+  
+  "background": "transparent",
   "signals": [
     {
       "name": "padAngle", "value": 0.02
@@ -65,10 +74,7 @@
         "field": "Type",
         "sort": {"field": "Total_Number", "order": "ascending"}
       },
-      "range": [
-        "#DF7280", "#844D4D", 
-        "#B9B3BF", "#FFA07A", "#515843"
-      ]
+      "range": ["#FF9130", "#D69500", "#BF6400", "#A13300", "#820300"]
     }
   ],
   "marks": [
@@ -127,7 +133,8 @@
           "fill": {"value": "black"},
           "text": {"signal": "datum.Type"},
           "align": {"value": "right"},
-          "baseline": {"value": "middle"}
+          "baseline": {"value": "middle"},
+          "fontSize": {"value": 16}
         }
       }
     }
