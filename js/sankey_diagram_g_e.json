@@ -260,7 +260,7 @@
     {
       "name": "color",
       "type": "ordinal",
-      "range": ["#0A0E48", "#DF7280", "#74B3CE", "#0CCA4A", 
+      "range": ["#4A55A2", "#DF7280", "#74B3CE", "#0CCA4A", 
         "#303A2B", "#F8F32B", "#94FBAB", "#FFA400"],
       "domain": {"data": "stacks", "field": "name"}
     }
