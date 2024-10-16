@@ -12,7 +12,7 @@
     }
   },
   "title": {
-    "text": "Let's check how prevelant renewable energy is in the world!",
+    "text": "Let's check how prevalent renewable energy is in the world!",
     "color": "#311e03",
     "fontSize": 32,
     "font": "sans-serif",
@@ -111,7 +111,7 @@
           "type": "quantitative",
           "scale": {
             "domain": [0, 100],
-            "range": ["#ffffd4", "#fed98e", "#fe9929", "#d95f0e", "#993404"]
+            "range": ["#FFFD8C", "#FFBB5C", "#FF9B50", "#E25E3E", "#C63D2F", "#993404"]
           },
           "title": "Renewable Energy Share (%)"
         },
@@ -135,8 +135,6 @@
         "text": { "field": "Year_selection" }
       }
     },
-
-
     {
       "data": {
         "values": [
