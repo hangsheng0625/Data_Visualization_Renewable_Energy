@@ -31,12 +31,15 @@
       "as": "Electricity_source"
     }
   ],
-  "mark": {
-    "type": "area",
-    "stroke": "white",
-    "strokeWidth": 1
-  },
   "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "mouseover",
+        "clear": "mouseout"
+      }
+    },
     {
       "name": "source_highlight",
       "select": {
@@ -46,6 +49,11 @@
       "bind": "legend"
     }
   ],
+  "mark": {
+    "type": "area",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
   "encoding": {
     "x": {
       "field": "Year",
@@ -89,7 +97,10 @@
       }
     },
     "opacity": {
-      "condition": {"param": "source_highlight", "value": 1},
+      "condition": [
+        {"param": "hover", "value": 1},
+        {"param": "source_highlight", "value": 0.6}
+      ],
       "value": 0.2
     },
     "tooltip": [

@@ -27,6 +27,10 @@
         "step": 1,
         "name": "Year: "
       }
+    },
+    {
+      "name": "hover",
+      "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
     }
   ],
   "transform": [
@@ -87,6 +91,10 @@
             "titleFontSize": 16,
             "title": "Emission Gas"
           }
+        },
+        "opacity": {
+          "condition": {"param": "hover", "value": 1},
+          "value": 0.3
         },
         "tooltip": [
           { "field": "Emission_Type_Updated", "type": "nominal", "title": "Emission Type" },
