@@ -25,7 +25,7 @@
         "min": 1965,
         "max": 2022,
         "step": 1,
-        "name": "Select Year"
+        "name": "Year: "
       }
     }
   ],
@@ -55,7 +55,8 @@
       "mark": {
         "type": "arc",
         "innerRadius": 40,
-        "strokeWidth": 2,
+        "stroke": "#FFFFFF",   
+        "strokeWidth": 2,      
         "tooltip": true
       },
       "encoding": {
