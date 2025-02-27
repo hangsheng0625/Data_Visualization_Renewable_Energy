@@ -21,7 +21,7 @@ This project includes the following visualizations:
 
 ## Running the Visualizations
 
-Click on the title
+Click [here]((https://hangsheng0625.github.io/Data_Visualization_Renewable_Energy/))
 
 ## Author
 
