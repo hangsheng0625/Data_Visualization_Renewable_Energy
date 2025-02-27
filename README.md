@@ -1,4 +1,4 @@
-# [Data_Visualization_Renewable_Energy]([https://ourworldindata.org/](https://hangsheng0625.github.io/Data_Visualization_Renewable_Energy/))
+# [Data_Visualization_Renewable_Energy](https://hangsheng0625.github.io/Data_Visualization_Renewable_Energy/)
 Data Visualization of Renewable Energy
 
 This project visualizes worldwide renewable energy, how each country transform their energy usage from traditional energy to renewable energy, 
